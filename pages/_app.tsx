@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   // });
   return (
     <Provider store={store}>
-      <title>Wollal</title>
+      <title>iZiil</title>
       <GlobalStyle />
       <Component {...pageProps} />
     </Provider>
