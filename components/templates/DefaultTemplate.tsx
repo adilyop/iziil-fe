@@ -3,7 +3,6 @@ import React from "react";
 
 const Container = styled.div`
   height: 100vh;
-  padding: 0 0.5rem;
 `;
 
 interface DefaultTemplateProps {
