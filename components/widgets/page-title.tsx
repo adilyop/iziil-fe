@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import { Typography } from "@material-tailwind/react";
-
-export function PageTitle({ section, heading, children }) {
+import { ReactNode } from "react";
+interface Props {
+  section: string,
+  heading: string,
+  children?: ReactNode
+  // any props that come into the component
+}
+export function PageTitle({ section, heading, children }: Props) {
   return (
     <div className="mx-auto w-full px-4 text-center lg:w-6/12 text-gray-500 mt-24">
       <Typography variant="lead" className="font-semibold">{section}</Typography>
