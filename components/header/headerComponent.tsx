@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 // import "./HeaderComponent.scss";
 import { useRouter } from 'next/router'
 export function HeaderComponent() {
+  const { asPath, pathname } = useRouter();
+
   const [expanded, setexpanded] = useState(false);
   const [tabSelected, settabSelected] = useState('Home');
+
+  useEffect(() => {
+    settabSelected(pathname)
+  })
 
   function openNavBar() {
     setexpanded(!expanded);
@@ -14,7 +21,7 @@ export function HeaderComponent() {
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 bg-gray-900">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a className="flex items-center">
-            <svg width="30px" height="30px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" >
+            <svg width="30px" height="30px" viewBox="0 0 32 32" enableBackground="new 0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" >
               <g id="Layer_2" />
               <g id="Layer_3" />
               <g id="Layer_4" />
@@ -67,16 +74,13 @@ export function HeaderComponent() {
           <div className={`w-full md:block md:w-auto ` + (expanded ? 'block' : 'hidden')} id="navbar-default">
             <ul className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white bg-gray-800 md:bg-gray-900 border-gray-700">
               <li>
-                <a href="./" className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white" aria-current="page">Home</a>
+                <a href="./" className={`block py-2 pr-4 pl-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent ` + (tabSelected == "/" ? 'md:text-blue-700' : 'md:text-gray-500')} aria-current="page">Home</a>
               </li>
               <li>
-                <a href="./About" className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent">About</a>
+                <a href="./Pricing" className={`block py-2 pr-4 pl-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent ` + (tabSelected == "/Pricing" ? 'md:text-blue-700' : 'md:text-gray-500')}>Pricing</a>
               </li>
               <li>
-                <a href="./Pricing" className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Pricing</a>
-              </li>
-              <li>
-                <a href="./Contact" className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Contact</a>
+                <a href="./Contact" className={`block py-2 pr-4 pl-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 md:hover:text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent ` + (tabSelected == "/Contact" ? 'md:text-blue-700' : 'md:text-gray-500')}>Contact</a>
               </li>
             </ul>
           </div>
