@@ -21,33 +21,11 @@ import React, { useRef, useEffect } from "react";
 // import welcomeImage from '../../assets/images/template.jpg';
 
 export default function HomePage() {
-  const form = useRef();
+  const form: any = useRef();
   const { asPath, pathname } = useRouter();
   const emailRef = useRef<HTMLInputElement>();
   const nameRef = useRef<HTMLInputElement>();
 
-  function openNavBar() {
-    console.log('fofo ', emailRef)
-    emailjs
-      .sendForm(
-        "service_fgk143o",
-        "template_95sreql",
-        {
-          name: "guezziadil@gmail.com",
-          recipient: "guezziadil@gmail.com"
-        },
-        "user_ZTSwo3kZFGZPv3CxayCd6"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          console.log("message sent");
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  }
   const sendEmail = (e: any) => {
     e.preventDefault();
 
